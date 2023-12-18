@@ -11,11 +11,13 @@ class AuthUserController extends Controller
 {
     public function create(AuthUserRequest $request)
     {
-        if (!Auth::attempt($request->validated())) {
+        if (! Auth::attempt($request->validated())) {
             return response()->json([
                 'message' => 'Unauthenticated (User Not Exist).',
             ], Response::HTTP_UNAUTHORIZED);
         }
+
+        $request->user()->tokens()->delete();
 
         $token = $request->user()
             ->createToken($request->input('email'))
