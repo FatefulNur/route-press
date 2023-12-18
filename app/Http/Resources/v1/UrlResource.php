@@ -3,6 +3,7 @@
 namespace App\Http\Resources\v1;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\v1\UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UrlResource extends JsonResource
