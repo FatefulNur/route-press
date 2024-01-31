@@ -9,7 +9,12 @@ class UrlService
     public function get()
     {
         return Url::with('user:id,name,email')
-            ->select('long_url', 'short_url', 'user_id', 'total_visit')
+            ->select([
+                'long_url',
+                'short_url',
+                'user_id',
+                'total_visit'
+            ])
             ->where('user_id', auth()->id())
             ->get();
     }
